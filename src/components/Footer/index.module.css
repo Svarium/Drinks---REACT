@@ -1,0 +1,20 @@
+.header{
+    background-color: orangered;
+    color: white;
+    text-align: center;
+}
+
+.header h1 {
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+}
+
+.footer {
+    background-color: silver;
+    color:white;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+}
