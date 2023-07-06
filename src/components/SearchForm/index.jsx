@@ -1,10 +1,16 @@
 import React from "react";
 import { Formik, Field, ErrorMessage } from "formik";
 import { Form, Row, Col, Alert, Button } from "react-bootstrap";
-import * as Yup from 'yup'
+import * as Yup from 'yup';
+import useCategories from "../../hooks/useCategories";
 
 
 export const SearchForm = () => {
+
+ const {categories} = useCategories();
+ console.log(categories);
+ 
+
   const initialValues = {
     name: "",
     category: "",
@@ -42,8 +48,8 @@ export const SearchForm = () => {
                 ></Field>
                 <ErrorMessage
                 name='name'
-                component={Form.text}
-                className="text-danger"
+                component={Form.Text}
+                className="text-danger ms-2"
                 ></ErrorMessage>
               </Form.Group>
             </Col>
@@ -51,9 +57,14 @@ export const SearchForm = () => {
               <Form.Group>
                 <Form.Label htmlFor="category">Categoría</Form.Label>
                 <Field id="category" name="category" as={Form.Select}>
-                  <option value="" selected hidden>
+                  <option value="" defaultValue="" hidden>
                     Seleccione categoría...
                   </option>
+                  {categories.map((category) => (
+                    <option value={category.strCategory} key={category.strCategory}>
+                      {category.strCategory}
+                    </option>
+                  ))}
                 </Field>
               </Form.Group>
             </Col>

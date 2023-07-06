@@ -3,8 +3,8 @@ import styles from './index.module.css'
 
 export const Footer = () => {
   return (
-    <header className={''}>
-<h1>Drinks from Formar</h1>
+    <header className={styles.footer}>
+<p>Drinks from Formar</p>
     </header>
     
   )
