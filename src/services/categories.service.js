@@ -8,6 +8,7 @@ export const getCategoriesService = async() => {
     
     const url = `${apiURL}list.php?c=list`
     const {data} = await axios.get(url)
+    
     return data.drinks || []
 
 

@@ -3,26 +3,27 @@ import { Formik, Field, ErrorMessage } from "formik";
 import { Form, Row, Col, Alert, Button } from "react-bootstrap";
 import * as Yup from 'yup';
 import useCategories from "../../hooks/useCategories";
+import useDrinks from "../../hooks/useDrinks";
 
 
 export const SearchForm = () => {
 
- const {categories} = useCategories();
- console.log(categories);
- 
+ const {categories} = useCategories(); 
+const {getDrinks, loading} = useDrinks()
 
   const initialValues = {
-    name: "",
+    ingredient: "",
     category: "",
   };
 
 
   const validationSchema = Yup.object({
-    name: Yup.string().required('Debe colocar un nombre')
+    ingredient: Yup.string().required('Debe colocar un nombre'),
+    category: Yup.string().required('La Categoría es requerida')
   })
 
   const handleSubmit = (values) => {
-    console.log(values);
+    getDrinks(values)
   }
 
   return (
@@ -38,16 +39,16 @@ export const SearchForm = () => {
           <Row>
             <Col md={6}>
               <Form.Group>
-                <Form.Label htmlFor="name">Nombre de la bebida</Form.Label>
+                <Form.Label htmlFor="ingredient">Ingrediente de la bebida</Form.Label>
                 <Field
-                  id="name"
+                  id="ingredient"
                   type="text"
                   placeholder="Ej. tequila, Vodka"
-                  name="name"
+                  name="ingredient"
                   as={Form.Control}
                 ></Field>
                 <ErrorMessage
-                name='name'
+                name='ingredient'
                 component={Form.Text}
                 className="text-danger ms-2"
                 ></ErrorMessage>
@@ -66,13 +67,21 @@ export const SearchForm = () => {
                     </option>
                   ))}
                 </Field>
+                <ErrorMessage
+                name='category'
+                component={Form.Text}
+                className="text-danger ms-2"
+                ></ErrorMessage>
               </Form.Group>
             </Col>
           </Row>
           <Row className="justify-content-end mt-3">
             <Col md={3}>
-              <Button variant="danger" disabled={false} className="w-100" type="submit">
-                  Buscar Bebidas
+              <Button variant="danger" 
+              disabled={loading} 
+              className="w-100 mb-3" 
+              type="submit">
+                 {loading ? "Buscando..." : " Buscar Bebidas"}
               </Button>
             </Col>
           </Row>
