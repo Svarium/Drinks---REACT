@@ -5,7 +5,7 @@ import { types } from '../../types';
 import { getDrinkById } from '../../helpers';
 
 export const DrinkModalDetail = () => {
-  const { showModal, handleShowModalClick, recipe, loading, drinks } = useDrinks();
+  const { showModal, handleShowModalClick, recipe, drinks } = useDrinks();
 
   const { strDrink, strDrinkThumb, strInstructions, idDrink } = recipe;
 
@@ -15,7 +15,7 @@ export const DrinkModalDetail = () => {
     for (let i = 1; i <= 15; i++) {
       if (recipe[`strIngredient${i}`]) {
         ingredients.push(
-          <li>
+          <li key={recipe[`strIngredient${i}`]}>
             {recipe[`strIngredient${i}`]} | {recipe[`strMeasure${i}`]}
           </li>
         );
@@ -25,7 +25,7 @@ export const DrinkModalDetail = () => {
     return ingredients;
   };
 
-  const {handleDrinkIdClick, } = useDrinks()
+/*   const {handleDrinkIdClick, } = useDrinks() */
 
 
   const {dispatch} = useCart();
@@ -35,7 +35,7 @@ export const DrinkModalDetail = () => {
   const drink =  getDrinkById(drinks, idDrink);
 
     dispatch({
-      type:types.addItem,
+      type:types.addItemToCart,
       payload: drink
     })
   } 

@@ -16,7 +16,7 @@ export const DrinkCard = ({drink}) => {
 
   const handleAddCart = () => {
     dispatch({
-      type:types.addItem,
+      type:types.addItemToCart,
       payload: drink
     })
   } 
