@@ -39,13 +39,14 @@ const {getDrinks, loading} = useDrinks()
           <Row>
             <Col md={6}>
               <Form.Group>
-                <Form.Label htmlFor="ingredient">Ingrediente de la bebida</Form.Label>
+                <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="ingredient">Ingrediente de la bebida</Form.Label>
                 <Field
                   id="ingredient"
                   type="text"
                   placeholder="Ej. tequila, Vodka"
                   name="ingredient"
                   as={Form.Control}
+                  className="shadow"
                 ></Field>
                 <ErrorMessage
                 name='ingredient'
@@ -56,8 +57,8 @@ const {getDrinks, loading} = useDrinks()
             </Col>
             <Col md={6}>
               <Form.Group>
-                <Form.Label htmlFor="category">Categoría</Form.Label>
-                <Field id="category" name="category" as={Form.Select}>
+                <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="category">Categoría de la bebida</Form.Label>
+                <Field className="shadow" id="category" name="category" as={Form.Select}>
                   <option value="" defaultValue="" hidden>
                     Seleccione categoría...
                   </option>
@@ -77,7 +78,7 @@ const {getDrinks, loading} = useDrinks()
           </Row>
           <Row className="justify-content-end mt-3">
             <Col md={3}>
-              <Button variant="danger" 
+              <Button variant="primary" 
               disabled={loading} 
               className="w-100 mb-3" 
               type="submit">

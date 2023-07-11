@@ -1,10 +1,22 @@
 .header{
-    background-color: orangered;
+    background: url("/public/headerDrinks.png");
+    background-size: cover;
     color: white;
     text-align: center;
+    height: 300px;
 }
 
-.header h1 {
+.titulo {
     font-family: "Outfit", sans-serif;
-    font-weight: 900;
+    font-weight: 900;   
+    background-color: black;
+    padding: 5px;
+    color: rgb(214, 211, 211);
 }
+
+
+.buttonCart {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }

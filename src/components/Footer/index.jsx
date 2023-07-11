@@ -4,7 +4,7 @@ import styles from './index.module.css'
 export const Footer = () => {
   return (
     <header className={styles.footer}>
-<p>Drinks from Formar</p>
+<p className='mt-1'>Drinks from Formar</p>
     </header>
     
   )

@@ -24,7 +24,7 @@ export const DrinkCard = ({drink}) => {
 
   return (
    <Col md={6} lg={3}>
-   <Card className='mb-4'>
+   <Card className='mb-4 shadow'>
     <Card.Img
     variant='top'
     src={drink.strDrinkThumb}
@@ -35,7 +35,7 @@ export const DrinkCard = ({drink}) => {
             {drink.strDrink}
         </Card.Title>
     <Button
-    variant={"warning"}
+    variant={"success"}
     className='w-100 text-uppercase mt-2'
     onClick={() => 
       {handleDrinkIdClick(drink.idDrink)
@@ -45,8 +45,8 @@ export const DrinkCard = ({drink}) => {
         Ver receta
     </Button>
     <Button
-    variant={"danger"}
-    className='w-100 text-uppercase mt-2'
+    variant={"primary"}
+    className='w-100  text-uppercase mt-2'
     onClick={handleAddCart}
     >
         Comprar

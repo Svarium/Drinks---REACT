@@ -12,14 +12,17 @@ export const Header = () => {
   const handleShowCart = () => setShowCart(true)
 
   return (
-    <header className={`d-flex justify-content-around py-5 ${styles.header}`}>
-      <h1>Search Drinks</h1>
-      <Button variant='outline-light' size='lg' onClick={handleShowCart} >
+    <>
+    <header className={` ${styles.header}`}>
+    </header>
+    <h1 className={`text-shadow text-center ${styles.titulo}`}>18.Drinks</h1>
+    <Button className={`m-3 ${styles.buttonCart}`} variant='danger' size='lg' onClick={handleShowCart} >
       <i className="fas fa-shopping-cart fa-lg" ></i>
       </Button>
-      <CartCanvas
+    <CartCanvas
       showCart={showCart} handleCloseCart={handleCloseCart}
       />
-    </header>
+    </>
+    
   )
 }

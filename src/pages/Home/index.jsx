@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom'
 import { DrinksList } from '../../components/DrinksList'
 import { DrinkModalDetail } from '../../components/DrinkModalDetail'
 
+
 export const Home = () => {
 
   
   return (
     <>
-     <SearchForm></SearchForm>
+     <SearchForm></SearchForm>     
      <DrinksList></DrinksList>
-     <DrinkModalDetail/>
+     <DrinkModalDetail/>     
     </>
   )
 }
