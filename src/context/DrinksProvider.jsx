@@ -8,6 +8,7 @@ import {
 const DrinksContext = createContext(null);
 
 const DrinksProvider = ({ children }) => {
+
   const [drinks, setDrinks] = useState([]);
 
   const [loading, setLoading] = useState(false);
@@ -69,7 +70,8 @@ const DrinksProvider = ({ children }) => {
     handleDrinkIdClick,
     recipe,
     showModal,
-    handleShowModalClick
+    handleShowModalClick,
+    idDrink
   };
 
   /*    useEffect(() => {

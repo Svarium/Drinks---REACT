@@ -25,3 +25,12 @@ export const getRecipeService = async(drinkId) => {
         throw new Error("Hubo un error al obtener la receta");
     }
 }
+
+/* export const getDrinkByIdService = async(drinkId) => {
+    try {
+        const url = `${apiURL}`
+    } catch (error) {
+        console.log(error);
+        throw new Error("Hubo un error al obtener la bebida");
+    }
+} */

@@ -3,10 +3,23 @@ import { Button, Card, Col } from 'react-bootstrap'
 import PropTypes from "prop-types";
 import useDrinks from '../../hooks/useDrinks';
 import styles from "./index.module.css";
+import useCart from '../../hooks/useCart';
+import { types } from '../../types';
+
 
 export const DrinkCard = ({drink}) => {
 
-  const {handleDrinkIdClick, } = useDrinks()
+  const {handleDrinkIdClick} = useDrinks()
+
+
+  const {dispatch} = useCart();
+
+  const handleAddCart = () => {
+    dispatch({
+      type:types.addItem,
+      payload: drink
+    })
+  } 
 
 
   return (
@@ -34,6 +47,7 @@ export const DrinkCard = ({drink}) => {
     <Button
     variant={"danger"}
     className='w-100 text-uppercase mt-2'
+    onClick={handleAddCart}
     >
         Comprar
     </Button>
