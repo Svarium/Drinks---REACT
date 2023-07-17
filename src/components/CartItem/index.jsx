@@ -42,7 +42,7 @@ export const CartItem = ({ drink }) => {
     <button className="btn btn-sm btn-danger" onClick={handleRemoveItem}>
     <i className="fas fa-minus"></i>
     </button>
-    <input type="text" style={{width:"50px"}} className="form-control"  value={quantity}/>
+    <input type="text" style={{width:"50px"}} className="form-control"  value={quantity} readOnly/>
     <button className="btn btn-sm btn-success" onClick={handleAddItem}>
     <i className="fas fa-plus"></i>
     </button>
