@@ -20,13 +20,13 @@ export const DrinkCard = ({ drink }) => {
 
     Swal.fire({
       title: 'Producto agregado al carrito!',
-      width: 400,
-      padding: '3em',
+      width: 500,
+      padding: '4em',
       color: '#716add',
       background: '#fff url()',
       backdrop: `
         rgba(0,0,123,0.4)
-        url("https://thumbs.gfycat.com/BouncyWelcomeGrassspider-max-1mb.gif")
+        url("/public/picmix.com_2376991.gif")
         left top
         no-repeat
       `

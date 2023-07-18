@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import useCart from "../../hooks/useCart";
 import { CartItem } from "../CartItem";
 import { types } from "../../types";
+import Swal from "sweetalert2";
 
 export const CartCanvas = ({ showCart, handleCloseCart }) => {
   const { cart, dispatch } = useCart();
@@ -11,6 +12,37 @@ export const CartCanvas = ({ showCart, handleCloseCart }) => {
     dispatch( {
       type: types.cleanCart,
       payload: {}
+    })
+  }
+
+  const confirmPurchase = () => {
+    dispatch( {
+      type: types.cleanCart,
+      payload: {}
+    })
+
+    let timerInterval
+    Swal.fire({
+      title: 'Compra realizada con exito!',
+      icon: 'success',
+      html: 'Procesando tu pedido <b></b>',
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
     })
   }
 
@@ -31,7 +63,7 @@ export const CartCanvas = ({ showCart, handleCloseCart }) => {
             </div>
             <div className="d-flex justofy-content-center gap-2 mt-4">
               <Button onClick={cleanCart} variant="secondary">Vaciar Carrito</Button>
-              <Button variant="danger">Confirmar compra</Button>
+              <Button onClick={confirmPurchase} variant="danger">Confirmar compra</Button>
             </div>
           </div>
         ) : (
