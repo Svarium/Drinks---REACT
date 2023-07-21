@@ -36,53 +36,64 @@ export const Register = () => {
 
       {(formik) => (
         <Form onSubmit={formik.handleSubmit}>
-          <Row>
-            <Col md={6}>
+         
               <Form.Group>
-                <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="ingredient">Ingrediente de la bebida</Form.Label>
+                <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="name">Nombre</Form.Label>
                 <Field
-                  id="ingredient"
+                  id="name"
                   type="text"
-                  placeholder="Ej. tequila, Vodka"
-                  name="ingredient"
+                  placeholder="Coloca tu nombre"
+                  name="name"
                   as={Form.Control}
                   className="shadow"
                 ></Field>
                 <ErrorMessage
-                name='ingredient'
+                name='name'
                 component={Form.Text}
                 className="text-danger ms-2"
                 ></ErrorMessage>
               </Form.Group>
-            </Col>
-            <Col md={6}>
+           
               <Form.Group>
-                <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="category">Categoría de la bebida</Form.Label>
-                <Field className="shadow" id="category" name="category" as={Form.Select}>
-                  <option value="" defaultValue="" hidden>
-                    Seleccione categoría...
-                  </option>
-                  {categories.map((category) => (
-                    <option value={category.strCategory} key={category.strCategory}>
-                      {category.strCategory}
-                    </option>
-                  ))}
-                </Field>
+                <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="email">Email</Form.Label>
+                <Field
+                  id="email"
+                  type="text"
+                  placeholder="Ingresa tu email"
+                  name="email"
+                  as={Form.Control}
+                  className="shadow"
+                ></Field>
                 <ErrorMessage
-                name='category'
+                name='email'
                 component={Form.Text}
                 className="text-danger ms-2"
                 ></ErrorMessage>
               </Form.Group>
-            </Col>
-          </Row>
+
+              <Form.Group>
+                <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="password">Contraseña</Form.Label>
+                <Field
+                  id="password"
+                  type="password"
+                  name="password"
+                  as={Form.Control}
+                  className="shadow"
+                ></Field>
+                <ErrorMessage
+                name='password'
+                component={Form.Text}
+                className="text-danger ms-2"
+                ></ErrorMessage>
+              </Form.Group>
+            
           <Row className="justify-content-end mt-3">
             <Col md={3}>
               <Button variant="primary" 
-              disabled={loading} 
+              disabled={false} 
               className="w-100 mb-3" 
               type="submit">
-                 {loading ? "Buscando..." : " Buscar Bebidas"}
+                Registrate
               </Button>
             </Col>
           </Row>

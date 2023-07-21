@@ -5,9 +5,11 @@ import { DrinksProvider } from "./context/DrinksProvider";
 import { AuthProvider } from "./context/AuthProvider";
 import { MainLayout } from "./layouts";
 import { AppRoutes } from "./routes";
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 function App() {
   return (
+    <Router>
     <AuthProvider>
       <CategoriesProvider>
         <DrinksProvider>
@@ -19,6 +21,7 @@ function App() {
         </DrinksProvider>
       </CategoriesProvider>
     </AuthProvider>
+    </Router>
   );
 }
 

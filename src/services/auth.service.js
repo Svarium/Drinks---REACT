@@ -24,17 +24,39 @@ export const registerAuthService = async(info) => {
 export const loginAuthService = async (info) => {
     try {
         const url = `${apiURL}login`;
-        const {data} = await axios.post(url, {
-         headers : {
-            "Content-Type" : "application/json",
-         },
-         body: JSON.stringify(info)
+        const {data} = await axios.post(url,
+        {
+            ...info
+        },
+        {
+            headers : {
+                "Content-Type" : "application/json",
+             },
+        })
+
+       /*  console.log(data); */
+
+        return data
+
+    } catch (error) {
+        /* console.log(error); */
+        throw error.response.data
+    }
+
+}
+
+export const profileUserService = async (token) => {
+    try {
+        const url = `${apiURL}profile`;
+        const {data} = await axios.get(url,{
+            headers : {
+                Authorization : token
+            }
         })
 
         return data
 
     } catch (error) {
-        throw new Error(error.message)
+        throw error.response.data 
     }
-
 }
