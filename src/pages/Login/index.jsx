@@ -4,11 +4,14 @@ import { Form, Row, Col, Alert, Button } from "react-bootstrap";
 import * as Yup from 'yup';
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 export const Login = () => {
+
+const navigate = useNavigate()
 
 const {login, alert} = useAuth()
 
@@ -33,6 +36,7 @@ const {login, alert} = useAuth()
       showConfirmButton: false,
       timer: 1500
     })
+    navigate('/')
    /* console.log(values); */
   }
 

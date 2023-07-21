@@ -4,6 +4,7 @@ import { Form, Row, Col, Alert, Button } from "react-bootstrap";
 import * as Yup from 'yup';
 import { registerAuthService } from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
@@ -26,6 +27,14 @@ export const Register = () => {
 
   const handleSubmit = async (values) => {
   const response = await registerAuthService(values)
+ 
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Registro exitoso!',
+    showConfirmButton: false,
+    timer: 1500
+  })
 
   console.log(response);
 
