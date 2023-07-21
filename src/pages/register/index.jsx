@@ -2,12 +2,14 @@ import React from "react";
 import { Formik, Field, ErrorMessage } from "formik";
 import { Form, Row, Col, Alert, Button } from "react-bootstrap";
 import * as Yup from 'yup';
+import { registerAuthService } from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
 
 
 
 export const Register = () => {
 
-
+  const navigate = useNavigate()
 
   const initialValues = {
     name: "",
@@ -22,8 +24,12 @@ export const Register = () => {
     password:Yup.string().required('La contraseña es obligatoria'),
   })
 
-  const handleSubmit = (values) => {
-   console.log();
+  const handleSubmit = async (values) => {
+  const response = await registerAuthService(values)
+
+  console.log(response);
+
+  navigate('/login')
   }
 
   return (
@@ -35,9 +41,9 @@ export const Register = () => {
 
 
       {(formik) => (
-        <Form onSubmit={formik.handleSubmit}>
+        <Form onSubmit={formik.handleSubmit} className="col-6 mx-auto">
          
-              <Form.Group>
+              <Form.Group className="mb-3">
                 <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="name">Nombre</Form.Label>
                 <Field
                   id="name"
@@ -54,7 +60,7 @@ export const Register = () => {
                 ></ErrorMessage>
               </Form.Group>
            
-              <Form.Group>
+              <Form.Group className="mb-3">
                 <Form.Label className="bg-primary rounded p-2 text-white shadow" htmlFor="email">Email</Form.Label>
                 <Field
                   id="email"

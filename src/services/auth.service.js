@@ -7,17 +7,19 @@ const apiURL = import.meta.env.VITE_API_URL_AUTH;
 export const registerAuthService = async(info) => {
     try {
         const url = `${apiURL}register`;
-        const {data} = await axios.post(url, {
+        const {data} = await axios.post(url,{
+            ...info
+        }, {
          headers : {
             "Content-Type" : "application/json",
          },
-         body: JSON.stringify(info)
+   /*       body: JSON.stringify(info) */
         })
 
         return data
 
     } catch (error) {
-        throw new Error(error.message)
+        throw error.response.data
     }
 }
 

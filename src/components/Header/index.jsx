@@ -45,8 +45,8 @@ export const Header = () => {
       <Link className={"btn btn-primary ms-3 mt-3"} to={'/login'}>
       <i className="fas fa-sign-in-alt fa-lg"></i> Login
       </Link>
-      <Link className={"btn btn-danger ms-3 mt-3"} to={'/'}>
-      <i className="fas fa-home fa-lg"></i> Inicio
+      <Link className={"btn btn-danger ms-3 mt-3"} to={'/register'}>
+      <i className="fas fa-user fa-lg"></i> Registro
       </Link>
         </div>
      
