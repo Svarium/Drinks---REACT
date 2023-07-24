@@ -8,7 +8,7 @@ export const Profile = () => {
 
 
 
-  console.log(strDrink);
+  
 
   useEffect(() => {
     getProfile();
