@@ -53,7 +53,7 @@ const login = async (info) => {
      const decodedToken = token ? jwtDecode(token) : null;
 
      setUser(decodedToken.user);
-     setFavorites(user.favorites);
+     setFavorites(decodedToken.user.favorites);
     } catch (error) {
         //console.log(error);
        handleAlert(error)

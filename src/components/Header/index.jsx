@@ -56,7 +56,7 @@ export const Header = () => {
 
    
     <div>
-    <Button className={`m-3 ${styles.buttonCart}`} variant='danger' size='lg' onClick={handleShowCart} >
+    <Button className={`m-3 shadow ${styles.buttonCart}`} variant='danger' size='lg' onClick={handleShowCart} >
       <i className="fas fa-shopping-cart fa-lg" ></i>
       <Badge pill className="btn btn-sm m-1 text-center" bg="warning">{cart.length}</Badge>
       </Button>

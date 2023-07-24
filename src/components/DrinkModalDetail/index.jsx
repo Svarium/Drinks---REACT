@@ -3,6 +3,7 @@ import useDrinks from "../../hooks/useDrinks";
 import useCart from '../../hooks/useCart';
 import { types } from '../../types';
 import { getDrinkById } from '../../helpers';
+import Swal from "sweetalert2";
 
 export const DrinkModalDetail = () => {
   const { showModal, handleShowModalClick, recipe, drinks } = useDrinks();
@@ -37,6 +38,20 @@ export const DrinkModalDetail = () => {
     dispatch({
       type:types.addItemToCart,
       payload: drink
+    })
+
+    Swal.fire({
+      title: 'Producto agregado al carrito!',
+      width: 500,
+      padding: '4em',
+      color: '#716add',
+      background: '#fff url()',
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("/public/picmix.com_2376991.gif")
+        left top
+        no-repeat
+      `
     })
   } 
 

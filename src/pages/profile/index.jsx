@@ -2,8 +2,13 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
+
 export const Profile = () => {
   const { userProfile, getProfile } = useAuth();
+
+
+
+  console.log(strDrink);
 
   useEffect(() => {
     getProfile();

@@ -1,8 +1,7 @@
 .main {
     background: url("/public/1380873_169.jpg");
     background-repeat: repeat;
-    background-size: cover;
+    background-size:contain;
     height: auto;
-    min-height: 100vh;
-    
+    min-height: 100vh;    
 }

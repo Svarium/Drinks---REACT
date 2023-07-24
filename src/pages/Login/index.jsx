@@ -4,7 +4,7 @@ import { Form, Row, Col, Alert, Button } from "react-bootstrap";
 import * as Yup from 'yup';
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -91,8 +91,13 @@ const {login, alert} = useAuth()
               className="w-100 mb-3" 
               type="submit">
                Ingresá
-              </Button>
+              </Button>       
             </Col>
+            <Col md={3}>
+            <Link className="btn btn-primary" to={'/'}>Ir al Inicio</Link>
+            </Col>
+            
+           
           </Row>
         </Form>
       )}

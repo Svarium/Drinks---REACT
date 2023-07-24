@@ -8,6 +8,10 @@ import Swal from "sweetalert2";
 export const CartCanvas = ({ showCart, handleCloseCart }) => {
   const { cart, dispatch } = useCart();
 
+ const arrayPrice = cart.map((drink) => drink.price * drink.quantity);
+ const total = arrayPrice.reduce((accumulator, currentTotal) => accumulator + currentTotal, 0)
+
+
   const cleanCart = () => {
     dispatch( {
       type: types.cleanCart,
@@ -60,8 +64,11 @@ export const CartCanvas = ({ showCart, handleCloseCart }) => {
                   <CartItem key={drink.idDrink} drink={drink}></CartItem>
                 ))}
               </ListGroup>
-            </div>
-            <div className="d-flex justofy-content-center gap-2 mt-4">
+            </div>       
+            <div className="d-flex justify-content-center" >
+            <Button variant="primary">Total de la compra: ${total} </Button>
+            </div>     
+            <div className="d-flex justify-content-center gap-2 mt-4">
               <Button onClick={cleanCart} variant="secondary">Vaciar Carrito</Button>
               <Button onClick={confirmPurchase} variant="danger">Confirmar compra</Button>
             </div>

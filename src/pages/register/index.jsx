@@ -3,7 +3,7 @@ import { Formik, Field, ErrorMessage } from "formik";
 import { Form, Row, Col, Alert, Button } from "react-bootstrap";
 import * as Yup from 'yup';
 import { registerAuthService } from "../../services/auth.service";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -65,7 +65,7 @@ export const Register = () => {
                 <ErrorMessage
                 name='name'
                 component={Form.Text}
-                className="text-danger ms-2"
+                className="text-danger ms-2 btn btn-danger btn-sm text-white"
                 ></ErrorMessage>
               </Form.Group>
            
@@ -82,7 +82,7 @@ export const Register = () => {
                 <ErrorMessage
                 name='email'
                 component={Form.Text}
-                className="text-danger ms-2"
+                className="text-danger ms-2 btn btn-danger btn-sm text-white"
                 ></ErrorMessage>
               </Form.Group>
 
@@ -98,7 +98,7 @@ export const Register = () => {
                 <ErrorMessage
                 name='password'
                 component={Form.Text}
-                className="text-danger ms-2"
+                className="text-danger ms-2 btn btn-danger btn-sm text-white"
                 ></ErrorMessage>
               </Form.Group>
             
@@ -110,6 +110,9 @@ export const Register = () => {
               type="submit">
                 Registrate
               </Button>
+            </Col>
+            <Col md={3}>
+            <Link className="btn btn-primary" to={'/'}>Ir al Inicio</Link>
             </Col>
           </Row>
         </Form>

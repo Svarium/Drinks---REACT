@@ -11,6 +11,7 @@ import useAuth from "../../hooks/useAuth";
 export const DrinkCard = ({ drink }) => {
   const {strDrinkThumb, strDrink, idDrink} = drink
   const { handleDrinkIdClick } = useDrinks();
+ 
 
   const {handleToggleFavorites, favorites, user} =  useAuth()
 
@@ -45,6 +46,7 @@ export const DrinkCard = ({ drink }) => {
       icon:"error",
       title:"Debes estar logueado",
     })
+    favorites
   }
 
   return (
