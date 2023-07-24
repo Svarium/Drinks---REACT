@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {createContext} from 'react'
 import { PropTypes } from "prop-types";
-import { loginAuthService, profileUserService } from '../services/auth.service';
+import { loginAuthService, profileUserService, toggleFavoriteService } from '../services/auth.service';
 import jwtDecode from 'jwt-decode';
 
 const AuthContext = createContext(null)
@@ -10,7 +10,32 @@ const AuthProvider = ({children}) => {
 
 const [user, setUser] = useState(null);
 const [alert, setAlert] = useState(null);
-const [userProfile, setUserProfile] = useState(null)
+const [userProfile, setUserProfile] = useState({})
+const [favorites, setFavorites] = useState([])
+
+useEffect(() => {
+const token = sessionStorage.getItem('DrinksToken')
+if(token){
+    const decodedToken = jwtDecode(token);
+    setUser(decodedToken.user)
+    setFavorites(decodedToken.user.favorites);
+}
+}, [])
+
+
+const handleToggleFavorites = (idDrink) => {
+    if(!favorites.includes(idDrink)){
+        setFavorites([
+            ...favorites,
+            idDrink
+        ]           
+        )
+    } else {
+        setFavorites(favorites.filter(favorite => favorite !== idDrink))
+    }
+
+    toggleFavoriteService(idDrink)
+}
 
 const handleAlert = (error) => {
     setAlert(error.message)
@@ -27,7 +52,8 @@ const login = async (info) => {
      sessionStorage.setItem('DrinksToken', token)
      const decodedToken = token ? jwtDecode(token) : null;
 
-     setUser(decodedToken.user)
+     setUser(decodedToken.user);
+     setFavorites(user.favorites);
     } catch (error) {
         //console.log(error);
        handleAlert(error)
@@ -57,6 +83,9 @@ const getProfile = async() => {
 
 const logout = () => {
     setUser(null)
+    setUserProfile({})
+    setFavorites([])
+    sessionStorage.removeItem('DrinksToken')
 }
 
 const contextValue = {
@@ -65,7 +94,9 @@ const contextValue = {
     login, 
     logout,
     alert,
-    getProfile
+    getProfile,
+    handleToggleFavorites,
+    favorites
 }
 
 

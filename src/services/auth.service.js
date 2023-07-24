@@ -62,3 +62,26 @@ export const profileUserService = async (token) => {
         throw error.response.data 
     }
 }
+
+export const toggleFavoriteService = async (idDrink) => {
+    try {
+
+        const token = sessionStorage.getItem('DrinksToken');
+
+        if(!token){
+          return null
+        }
+
+        const url = `${apiURL}favorite?drink=${idDrink}`;
+        const {data} = await axios.get(url,{
+            headers : {
+                Authorization : token
+            }
+        })
+
+        return data
+
+    } catch (error) {
+        throw error.response.data 
+    }
+}
