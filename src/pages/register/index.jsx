@@ -21,8 +21,10 @@ export const Register = () => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Debe colocar un nombre'),
-    email: Yup.string().required('Debe ingresar un email'),
-    password:Yup.string().required('La contraseña es obligatoria'),
+    email: Yup.string()
+    .required('Debe ingresar un email')
+  ,
+    password: Yup.string().required('La contraseña es obligatoria'),
   })
 
   const handleSubmit = async (values) => {
@@ -46,9 +48,6 @@ export const Register = () => {
     onSubmit={handleSubmit}
     validationSchema={validationSchema}
     >
-
-
-
       {(formik) => (
         <Form onSubmit={formik.handleSubmit} className="col-6 mx-auto">
          

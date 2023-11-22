@@ -13,7 +13,7 @@ export const registerAuthService = async(info) => {
          headers : {
             "Content-Type" : "application/json",
          },
-   /*       body: JSON.stringify(info) */
+         body: JSON.stringify(info)
         })
 
         return data
