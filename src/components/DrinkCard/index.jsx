@@ -31,7 +31,7 @@ export const DrinkCard = ({ drink }) => {
       background: '#fff url()',
       backdrop: `
         rgba(0,0,123,0.4)
-        url("/public/picmix.com_2376991.gif")
+        url("/dist/picmix.com_2376991.gif")
         left top
         no-repeat
       `
